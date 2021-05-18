@@ -41,17 +41,24 @@ def print_banner():
     Simple WebPage Genrator
     Version : 0.1
     Contributers  : Amjad, r1jf45                                                               
-    ''')
+    
+    Enter a number based on your need 
+    
+    ==================================MENU============================
+             
+             1: SAMPLE PAGE WITH MINIMAL PERSONAL DATA
+             2: SAMPLE FORM TO ACCESS MINIMAL PERSONAL DATA
+             3: SAMPLE FRAME SET TO INCLUDE YOU ALREADY CREATED DATA ( only for 3 pages -- screen divition "cols = 25%,50%,25%" )''')
 
 
 '''
 function : write_html
-    writes the html file with given keys
-@param 
-    template_file_name : str  
-    output_file_name   : str  
-@return None
-'''
+        writes the html file with given keys
+          @param 
+              template_file_name : str  
+              output_file_name   : str  
+          @return None
+          '''
 def write_html(template_file_name, output_file_name, **kwargs):
     try:
         template_file = open(template_file_name, 'r')
@@ -105,7 +112,18 @@ def get_info(keys):
 
 def main():
     print_banner()
-    template_file_name = input('Enter template file name(Eg: template.html): ')
+    option = int(input("enter =>"))
+    if option == 1:
+        template_file_name = "MINIMAL_PERSONAL_DATA.html"
+    elif option == 2:
+        template_file_name = "SAMPLE_FORM.html"
+    elif option == 3:
+        template_file_name = "FRAME.html"
+        print("\n\n *** Please enter your URLs in \"\" ***** \n\n")
+    else:
+        print("oops wrong option try again")
+        exit()
+    #template_file_name = input('Enter template file name(Eg: template.html): ')
     output_file_name = input('Enter output file name(Eg: output.html): ')
     keys = load_keys(template_file_name)
     data = get_info(keys)
